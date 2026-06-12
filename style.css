@@ -1845,6 +1845,9 @@ body.ova-mode .ova-viewer-view .iframe-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-end;
+    max-width: 52px;
+    overflow: hidden;
     padding: 0;
     gap: 0;
     border-left: none;

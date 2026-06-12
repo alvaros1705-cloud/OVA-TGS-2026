@@ -1788,34 +1788,39 @@ body.ova-mode .ova-viewer-view .iframe-wrapper {
     min-width: 0;
   }
   .header-left {
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     min-width: 0;
+    z-index: 2;
   }
   .header-right {
     flex: 0 0 auto;
+    z-index: 2;
   }
   .logo-container {
-    gap: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    gap: 0;
     min-width: 0;
+    z-index: 1;
+    pointer-events: none;
   }
   .header-logo {
     max-height: 38px;
     flex-shrink: 0;
+    pointer-events: auto;
   }
-  .logo-title {
-    font-size: 0.82rem;
-    line-height: 1.2;
-    word-break: break-word;
-  }
-  .logo-subtitle {
+  .logo-text {
     display: none;
   }
-  .usb-text {
+  .institutional-badge {
     display: none;
   }
   .header-weather {
     padding: 0 8px;
     gap: 0;
+    border-left: none;
   }
   .header-weather__date {
     display: none;
@@ -1931,9 +1936,6 @@ body.ova-mode .ova-viewer-view .iframe-wrapper {
 }
 
 @media (max-width: 480px) {
-  .logo-title {
-    font-size: 0.75rem;
-  }
   .header-weather__label {
     display: none;
   }

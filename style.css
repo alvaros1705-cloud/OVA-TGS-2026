@@ -1836,7 +1836,7 @@ body.ova-mode .ova-viewer-view .iframe-wrapper {
     display: none;
   }
   .header-weather {
-    padding: 0 0 0 2px;
+    padding: 0 4px 0 0;
     gap: 0;
     border-left: none;
     flex-shrink: 0;
@@ -1847,12 +1847,16 @@ body.ova-mode .ova-viewer-view .iframe-wrapper {
   }
   .header-weather__time {
     display: flex;
-    gap: 3px;
+    gap: 0;
   }
   .header-weather__time time {
-    font-size: 0.62rem;
+    font-size: 0.58rem;
     min-width: auto;
-    letter-spacing: -0.02em;
+    max-width: 9ch;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
   }
   .header-weather__label {
     display: none;
@@ -1959,11 +1963,9 @@ body.ova-mode .ova-viewer-view .iframe-wrapper {
 }
 
 @media (max-width: 480px) {
-  .header-weather__label {
-    display: none;
-  }
   .header-weather__time time {
-    font-size: 0.68rem;
+    font-size: 0.55rem;
+    max-width: 8.5ch;
   }
   .ovas-grid {
     grid-template-columns: 1fr;

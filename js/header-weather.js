@@ -13,6 +13,10 @@ const HeaderWeather = (() => {
     const ampm = h >= 12 ? 'pm' : 'am';
     h = h % 12;
     if (h === 0) h = 12;
+    const mobile = window.matchMedia('(max-width: 767px)').matches;
+    if (mobile) {
+      return `${h}:${pad(d.getMinutes())} ${ampm}`;
+    }
     return `${h}:${pad(d.getMinutes())}:${pad(d.getSeconds())} ${ampm}`;
   }
 

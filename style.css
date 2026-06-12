@@ -1795,13 +1795,16 @@ body.ova-mode .ova-viewer-view .iframe-wrapper {
     flex-shrink: 0;
   }
   .header-left {
-    flex: 0 0 auto;
+    flex: 1 1 0;
     min-width: 0;
     z-index: 2;
   }
   .header-right {
-    flex: 0 0 auto;
+    flex: 1 1 0;
+    min-width: 0;
     z-index: 2;
+    justify-content: flex-end;
+    gap: 6px;
   }
   .logo-container {
     position: absolute;
@@ -1810,7 +1813,7 @@ body.ova-mode .ova-viewer-view .iframe-wrapper {
     transform: translate(-50%, -50%);
     gap: 0;
     width: auto;
-    max-width: calc(100% - 200px);
+    max-width: 46px;
     min-width: 0;
     z-index: 1;
     pointer-events: none;
@@ -1833,22 +1836,26 @@ body.ova-mode .ova-viewer-view .iframe-wrapper {
     display: none;
   }
   .header-weather {
-    padding: 0 8px;
+    padding: 0 0 0 2px;
     gap: 0;
     border-left: none;
     flex-shrink: 0;
+    margin-left: auto;
   }
   .header-weather__date {
     display: none;
   }
   .header-weather__time {
     display: flex;
+    gap: 3px;
   }
   .header-weather__time time {
-    font-size: 0.72rem;
+    font-size: 0.62rem;
     min-width: auto;
+    letter-spacing: -0.02em;
   }
   .header-weather__label {
+    display: none;
     font-size: 0.65rem;
   }
   .hamburger-btn {

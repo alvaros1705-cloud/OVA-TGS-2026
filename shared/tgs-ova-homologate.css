@@ -1,0 +1,292 @@
+/**
+ * TGS OVA — Capa de homologación visual (sin alterar lógica)
+ * Mapea selectores legacy de las 14 OVAs al Design System USB TGS
+ * Cargar DESPUÉS de los estilos locales de cada OVA
+ */
+
+/* ── Navegación / sidebar-like navs ───────────────────────────────────── */
+.tgs-ova-root nav,
+.tgs-ova-root .navbar,
+.tgs-ova-root #navbar,
+.tgs-ova-root #nav,
+.tgs-ova-root #main-header,
+.tgs-ova-root header nav {
+  top: var(--tgs-header-h) !important;
+  background: rgba(20, 40, 80, 0.95) !important;
+  backdrop-filter: var(--tgs-blur) !important;
+  -webkit-backdrop-filter: var(--tgs-blur) !important;
+  border-bottom: 1px solid var(--tgs-portal-border) !important;
+  font-family: var(--tgs-font-sans) !important;
+}
+
+.tgs-ova-root nav a,
+.tgs-ova-root .nav-links a,
+.tgs-ova-root .nav-link,
+.tgs-ova-root .nav-menu a,
+.tgs-ova-root #nav-menu a,
+.tgs-ova-root .nl a {
+  color: rgba(248, 250, 252, 0.8) !important;
+  font-family: var(--tgs-font-sans) !important;
+  transition: color var(--tgs-transition-fast);
+}
+
+.tgs-ova-root nav a:hover,
+.tgs-ova-root .nav-links a:hover,
+.tgs-ova-root .nav-link:hover,
+.tgs-ova-root .nav-menu a:hover {
+  color: var(--tgs-teal) !important;
+}
+
+.tgs-ova-root .nav-brand,
+.tgs-ova-root .nav-logo,
+.tgs-ova-root .brand {
+  color: var(--tgs-teal) !important;
+  font-family: var(--tgs-font-mono) !important;
+  font-weight: 700;
+}
+
+/* ── Hero / headers académicos ────────────────────────────────────────── */
+.tgs-ova-root .hero,
+.tgs-ova-root #hero,
+.tgs-ova-root .hero-section,
+.tgs-ova-root header.hero,
+.tgs-ova-root #inicio.hero,
+.tgs-ova-root section#hero {
+  background: var(--tgs-grad-surface) !important;
+  border-bottom: 1px solid var(--tgs-border);
+}
+
+.tgs-ova-root .hero h1,
+.tgs-ova-root #hero h1,
+.tgs-ova-root .hero-title,
+.tgs-ova-root .hero-h1,
+.tgs-ova-root h1.hero-title {
+  font-family: var(--tgs-font-sans) !important;
+  color: var(--tgs-text) !important;
+  letter-spacing: -0.02em;
+}
+
+.tgs-ova-root .hero-sub,
+.tgs-ova-root .hero-subtitle,
+.tgs-ova-root .hero-desc,
+.tgs-ova-root .hero-meta,
+.tgs-ova-root .hero-tag,
+.tgs-ova-root .hero-badge,
+.tgs-ova-root .hero-label {
+  font-family: var(--tgs-font-sans) !important;
+  color: var(--tgs-text-muted) !important;
+}
+
+.tgs-ova-root .hero-badge,
+.tgs-ova-root .hero-tag,
+.tgs-ova-root .hero-label,
+.tgs-ova-root .hero-obj,
+.tgs-ova-root .sec-tag,
+.tgs-ova-root .section-label,
+.tgs-ova-root .tag {
+  background: rgba(0, 104, 55, 0.12) !important;
+  color: var(--tgs-teal) !important;
+  border: 1px solid var(--tgs-border) !important;
+  border-radius: 999px;
+}
+
+/* ── Secciones y contenedores ─────────────────────────────────────────── */
+.tgs-ova-root section,
+.tgs-ova-root .section,
+.tgs-ova-root .sec,
+.tgs-ova-root .container,
+.tgs-ova-root .section-wrap {
+  font-family: var(--tgs-font-sans);
+}
+
+.tgs-ova-root .section-title,
+.tgs-ova-root .sec-title,
+.tgs-ova-root h2.section-title {
+  font-family: var(--tgs-font-sans) !important;
+  color: var(--tgs-text) !important;
+}
+
+/* ── Tarjetas (todas las variantes) ───────────────────────────────────── */
+.tgs-ova-root .card,
+.tgs-ova-root .tcard,
+.tgs-ova-root .enfoque-card,
+.tgs-ova-root .author-card,
+.tgs-ova-root .indicator-card,
+.tgs-ova-root .theory-intro,
+.tgs-ova-root .concept-card,
+.tgs-ova-root .ctx-grid .card,
+.tgs-ova-root .cards-grid .card,
+.tgs-ova-root .card-grid .card,
+.tgs-ova-root .qq,
+.tgs-ova-root .game-card,
+.tgs-ova-root .tgs-card {
+  background: var(--tgs-surface) !important;
+  border: 1px solid var(--tgs-border) !important;
+  border-radius: var(--tgs-radius-lg) !important;
+  box-shadow: var(--tgs-shadow-sm) !important;
+  color: var(--tgs-text) !important;
+  transition: border-color var(--tgs-transition-fast), box-shadow var(--tgs-transition-fast);
+}
+
+.tgs-ova-root .card:hover,
+.tgs-ova-root .enfoque-card:hover,
+.tgs-ova-root .author-card:hover {
+  border-color: var(--tgs-border-strong) !important;
+}
+
+.tgs-ova-root .card-title,
+.tgs-ova-root .card-hd,
+.tgs-ova-root h3.card-title {
+  font-family: var(--tgs-font-sans) !important;
+  color: var(--tgs-text) !important;
+}
+
+.tgs-ova-root .card-text,
+.tgs-ova-root .card-bd,
+.tgs-ova-root .card-desc {
+  color: var(--tgs-text-muted) !important;
+}
+
+/* ── Botones legacy → estilo TGS ──────────────────────────────────────── */
+.tgs-ova-root .btn-primary,
+.tgs-ova-root a.btn-primary,
+.tgs-ova-root button.btn-primary,
+.tgs-ova-root .btn-hero-primary,
+.tgs-ova-root .btn-card-primary,
+.tgs-ova-root .tgs-btn-primary {
+  color: #fff !important;
+  background: var(--tgs-grad-primary) !important;
+  border: none !important;
+  border-radius: var(--tgs-radius-md) !important;
+  font-family: var(--tgs-font-sans) !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 14px rgba(0, 104, 55, 0.22) !important;
+}
+
+.tgs-ova-root .btn-outline,
+.tgs-ova-root .btn-ghost,
+.tgs-ova-root .btn-secondary,
+.tgs-ova-root a.btn-secondary,
+.tgs-ova-root .btn-hero-secondary,
+.tgs-ova-root .btn-card-secondary,
+.tgs-ova-root .tgs-btn-secondary {
+  color: var(--tgs-text) !important;
+  background: transparent !important;
+  border: 1px solid var(--tgs-border) !important;
+  border-radius: var(--tgs-radius-md) !important;
+  font-family: var(--tgs-font-sans) !important;
+}
+
+.tgs-ova-root .btn-outline:hover,
+.tgs-ova-root .btn-ghost:hover,
+.tgs-ova-root .tgs-btn-secondary:hover {
+  border-color: var(--tgs-teal) !important;
+  color: var(--tgs-teal) !important;
+}
+
+/* ── Tabs / pestañas ──────────────────────────────────────────────────── */
+.tgs-ova-root .tabs,
+.tgs-ova-root .tab,
+.tgs-ova-root .nav-tabs .nav-tab {
+  font-family: var(--tgs-font-sans) !important;
+}
+
+.tgs-ova-root .tab.active,
+.tgs-ova-root .nav-tab.active {
+  color: var(--tgs-teal) !important;
+  border-color: var(--tgs-teal) !important;
+  background: rgba(0, 168, 150, 0.08) !important;
+}
+
+/* ── Quiz / juegos — solo contenedor visual ───────────────────────────── */
+.tgs-ova-root .quiz-result,
+.tgs-ova-root .quiz-result,
+.tgs-ova-root .qscore,
+.tgs-ova-root .qo,
+.tgs-ova-root .qopts .qo {
+  font-family: var(--tgs-font-sans) !important;
+  border-color: var(--tgs-border) !important;
+}
+
+.tgs-ova-root .qo.correct,
+.tgs-ova-root .learning-quiz-opt.correct {
+  border-color: var(--tgs-success) !important;
+  background: rgba(16, 185, 129, 0.12) !important;
+}
+
+.tgs-ova-root .qo.wrong,
+.tgs-ova-root .learning-quiz-opt.wrong {
+  border-color: var(--tgs-error) !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────────── */
+.tgs-ova-root footer,
+.tgs-ova-root #footer {
+  background: var(--tgs-surface-elevated) !important;
+  border-top: 1px solid var(--tgs-border) !important;
+  color: var(--tgs-text-muted) !important;
+  font-family: var(--tgs-font-sans) !important;
+}
+
+/* ── Tema claro — overrides de superficie ─────────────────────────────── */
+html.tgs-ova-light.tgs-ova-root .tgs-ova-usb-header {
+  background: linear-gradient(135deg, #1B365D 0%, #234A7A 100%);
+}
+
+html.tgs-ova-light.tgs-ova-root nav,
+html.tgs-ova-light.tgs-ova-root .navbar,
+html.tgs-ova-light.tgs-ova-root #navbar {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+html.tgs-ova-light.tgs-ova-root nav a,
+html.tgs-ova-light.tgs-ova-root .nav-links a {
+  color: #334155 !important;
+}
+
+html.tgs-ova-light.tgs-ova-root .card,
+html.tgs-ova-light.tgs-ova-root .tcard,
+html.tgs-ova-light.tgs-ova-root .enfoque-card {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+html.tgs-ova-light.tgs-ova-root .hero,
+html.tgs-ova-light.tgs-ova-root #hero {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+}
+
+html.tgs-ova-light.tgs-ova-root .hero h1,
+html.tgs-ova-light.tgs-ova-root .section-title {
+  color: #0f172a !important;
+}
+
+/* ── Canvas / simuladores: no alterar dimensiones ─────────────────────── */
+.tgs-ova-root canvas,
+.tgs-ova-root #bg-canvas,
+.tgs-ova-root #hero-cv,
+.tgs-ova-root #particles,
+.tgs-ova-root #starfield {
+  /* preservar renderizado; solo z-index si tapa chrome */
+}
+
+/* ── Videos e iframes internos: intactos ──────────────────────────────── */
+.tgs-ova-root iframe,
+.tgs-ova-root video {
+  border-radius: var(--tgs-radius-md);
+  border: 1px solid var(--tgs-border);
+}
+
+/* ── Progress bars ────────────────────────────────────────────────────── */
+.tgs-ova-root .nav-progress,
+.tgs-ova-root .nav-progress-bar,
+.tgs-ova-root #reading-progress-bar,
+.tgs-ova-root .progress-bar {
+  background: var(--tgs-border) !important;
+}
+
+.tgs-ova-root .nav-progress-bar,
+.tgs-ova-root #reading-progress-bar {
+  background: var(--tgs-grad-primary) !important;
+}

@@ -1,0 +1,89 @@
+/**
+ * TGS OVA Design System — Tokens institucionales USB
+ * Portal TGS · Universidad Simón Bolívar · Campus Cúcuta
+ */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root,
+html.tgs-ova-root {
+  --tgs-font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --tgs-font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  --tgs-green: #006837;
+  --tgs-green-hover: #004d28;
+  --tgs-teal: #00a896;
+  --tgs-teal-hover: #008f7f;
+  --tgs-bg: #0b0d19;
+  --tgs-surface: rgba(18, 22, 43, 0.85);
+  --tgs-surface-elevated: rgba(22, 28, 52, 0.92);
+  --tgs-border: rgba(0, 168, 150, 0.15);
+  --tgs-border-strong: rgba(0, 104, 55, 0.35);
+  --tgs-text: #f8fafc;
+  --tgs-text-muted: #94a3b8;
+  --tgs-text-subtle: #64748b;
+
+  --tgs-portal-blue: #142850;
+  --tgs-portal-blue-secondary: #1B365D;
+  --tgs-portal-border: rgba(64, 156, 255, 0.18);
+
+  --tgs-grad-primary: linear-gradient(135deg, var(--tgs-green) 0%, var(--tgs-teal) 100%);
+  --tgs-grad-surface: linear-gradient(135deg, rgba(18, 22, 43, 0.95) 0%, rgba(15, 18, 32, 0.95) 100%);
+  --tgs-grad-glow: radial-gradient(circle at 50% 0%, rgba(0, 168, 150, 0.08), transparent 55%);
+
+  --tgs-success: #10b981;
+  --tgs-warning: #f59e0b;
+  --tgs-error: #ef4444;
+  --tgs-info: #3b82f6;
+
+  --tgs-radius-sm: 6px;
+  --tgs-radius-md: 10px;
+  --tgs-radius-lg: 14px;
+  --tgs-radius-xl: 18px;
+  --tgs-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  --tgs-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --tgs-blur: blur(14px);
+  --tgs-transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --tgs-transition-fast: 0.2s ease;
+
+  --tgs-header-h: 52px;
+  --tgs-chrome-h: 88px;
+
+  /* Alias → variables heredadas por OVAs legacy */
+  --bg: var(--tgs-bg);
+  --bg-color: var(--tgs-bg);
+  --surface: var(--tgs-surface);
+  --surface-color: var(--tgs-surface);
+  --card: var(--tgs-surface-elevated);
+  --border: var(--tgs-border);
+  --border-color: var(--tgs-border);
+  --text: var(--tgs-text);
+  --text-primary: var(--tgs-text);
+  --text-muted: var(--tgs-text-muted);
+  --muted: var(--tgs-text-muted);
+  --accent: var(--tgs-teal);
+  --accent1: var(--tgs-teal);
+  --accent2: var(--tgs-green);
+  --color-primary: var(--tgs-green);
+  --color-secondary: var(--tgs-teal);
+}
+
+html.tgs-ova-light,
+html.tgs-ova-light.tgs-ova-root {
+  --tgs-bg: #f8fafc;
+  --tgs-surface: rgba(255, 255, 255, 0.92);
+  --tgs-surface-elevated: #ffffff;
+  --tgs-border: rgba(0, 104, 55, 0.14);
+  --tgs-border-strong: rgba(0, 168, 150, 0.28);
+  --tgs-text: #0f172a;
+  --tgs-text-muted: #475569;
+  --tgs-text-subtle: #64748b;
+  --tgs-grad-surface: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+  --tgs-grad-glow: radial-gradient(circle at 50% 0%, rgba(0, 104, 55, 0.05), transparent 55%);
+  --tgs-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+  --tgs-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+html.tgs-ova-embedded.tgs-ova-root {
+  --tgs-header-h: 44px;
+  --tgs-chrome-h: 72px;
+}

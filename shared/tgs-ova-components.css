@@ -1,0 +1,306 @@
+/**
+ * TGS OVA Design System — Componentes USB
+ * Requiere: tgs-ova-tokens.css
+ */
+
+/* ── Chrome institucional USB ─────────────────────────────────────────── */
+.tgs-ova-usb-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: var(--tgs-header-h);
+  padding: 0 clamp(12px, 3vw, 24px);
+  background: linear-gradient(135deg, var(--tgs-portal-blue) 0%, var(--tgs-portal-blue-secondary) 100%);
+  border-bottom: 1px solid var(--tgs-portal-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  font-family: var(--tgs-font-sans);
+}
+
+.tgs-ova-usb-header__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.tgs-ova-usb-header__mark {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--tgs-radius-sm);
+  background: var(--tgs-grad-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--tgs-font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.tgs-ova-usb-header__title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #f8fafc;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tgs-ova-usb-header__meta {
+  font-size: 0.68rem;
+  color: rgba(248, 250, 252, 0.75);
+  text-align: right;
+  line-height: 1.35;
+}
+
+html.tgs-ova-embedded .tgs-ova-usb-header__meta span:last-child {
+  display: none;
+}
+
+/* ── Layout base OVA ──────────────────────────────────────────────────── */
+.tgs-ova-body {
+  font-family: var(--tgs-font-sans) !important;
+  background-color: var(--tgs-bg) !important;
+  background-image: var(--tgs-grad-glow);
+  color: var(--tgs-text) !important;
+  padding-top: var(--tgs-chrome-h) !important;
+  transition: background-color var(--tgs-transition), color var(--tgs-transition);
+}
+
+.tgs-ova-body h1,
+.tgs-ova-body h2,
+.tgs-ova-body h3,
+.tgs-ova-body h4 {
+  font-family: var(--tgs-font-sans) !important;
+}
+
+.tgs-ova-body code,
+.tgs-ova-body pre,
+.tgs-ova-body kbd,
+.tgs-ova-body .mono {
+  font-family: var(--tgs-font-mono) !important;
+}
+
+/* ── Botones institucionales ──────────────────────────────────────────── */
+.tgs-btn-primary,
+.tgs-ova-root .tgs-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: var(--tgs-radius-md);
+  font-family: var(--tgs-font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  border: none;
+  color: #fff !important;
+  background: var(--tgs-grad-primary) !important;
+  box-shadow: 0 4px 14px rgba(0, 104, 55, 0.25);
+  text-decoration: none;
+  transition: var(--tgs-transition-fast);
+}
+
+.tgs-btn-primary:hover,
+.tgs-ova-root .tgs-btn-primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.tgs-btn-secondary,
+.tgs-ova-root .tgs-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: var(--tgs-radius-md);
+  font-family: var(--tgs-font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--tgs-text) !important;
+  background: transparent !important;
+  border: 1px solid var(--tgs-border) !important;
+  text-decoration: none;
+  transition: var(--tgs-transition-fast);
+}
+
+.tgs-btn-secondary:hover,
+.tgs-ova-root .tgs-btn-secondary:hover {
+  border-color: var(--tgs-teal) !important;
+  color: var(--tgs-teal) !important;
+  background: rgba(0, 168, 150, 0.06) !important;
+}
+
+/* ── Tarjetas y paneles ───────────────────────────────────────────────── */
+.tgs-card,
+.tgs-ova-root .tgs-card {
+  background: var(--tgs-surface) !important;
+  border: 1px solid var(--tgs-border) !important;
+  border-radius: var(--tgs-radius-lg) !important;
+  box-shadow: var(--tgs-shadow-sm);
+  backdrop-filter: var(--tgs-blur);
+}
+
+.tgs-panel {
+  background: var(--tgs-surface);
+  border: 1px solid var(--tgs-border);
+  border-radius: var(--tgs-radius-lg);
+  overflow: hidden;
+}
+
+.tgs-panel__head {
+  padding: 10px 16px;
+  background: var(--tgs-surface-elevated);
+  border-bottom: 1px solid var(--tgs-border);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tgs-text-muted);
+}
+
+/* ── Badges ───────────────────────────────────────────────────────────── */
+.tgs-badge {
+  display: inline-flex;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(0, 104, 55, 0.15);
+  color: var(--tgs-teal);
+  border: 1px solid var(--tgs-border);
+}
+
+/* ── Tablas ───────────────────────────────────────────────────────────── */
+.tgs-ova-root table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: var(--tgs-font-sans);
+  font-size: 0.875rem;
+}
+
+.tgs-ova-root th {
+  background: var(--tgs-surface-elevated);
+  color: var(--tgs-text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  padding: 10px 12px;
+  border: 1px solid var(--tgs-border);
+}
+
+.tgs-ova-root td {
+  padding: 10px 12px;
+  border: 1px solid var(--tgs-border);
+  color: var(--tgs-text);
+}
+
+.tgs-ova-root tr:nth-child(even) td {
+  background: rgba(0, 168, 150, 0.03);
+}
+
+/* ── Formularios ──────────────────────────────────────────────────────── */
+.tgs-ova-root input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]),
+.tgs-ova-root select,
+.tgs-ova-root textarea {
+  font-family: var(--tgs-font-sans) !important;
+  background: var(--tgs-bg) !important;
+  color: var(--tgs-text) !important;
+  border: 1px solid var(--tgs-border) !important;
+  border-radius: var(--tgs-radius-md) !important;
+  padding: 8px 12px;
+  transition: border-color var(--tgs-transition-fast), box-shadow var(--tgs-transition-fast);
+}
+
+.tgs-ova-root input:focus,
+.tgs-ova-root select:focus,
+.tgs-ova-root textarea:focus {
+  outline: none;
+  border-color: var(--tgs-teal) !important;
+  box-shadow: 0 0 0 3px rgba(0, 168, 150, 0.15);
+}
+
+.tgs-ova-root input[type="checkbox"],
+.tgs-ova-root input[type="radio"] {
+  accent-color: var(--tgs-teal);
+}
+
+/* ── Modo embebido (iframe) ───────────────────────────────────────────── */
+html.tgs-ova-embedded .tgs-ova-body .hero,
+html.tgs-ova-embedded .tgs-ova-body #hero,
+html.tgs-ova-embedded .tgs-ova-body .hero-section,
+html.tgs-ova-embedded .tgs-ova-body header.hero {
+  min-height: auto !important;
+  padding-top: 1.5rem !important;
+  padding-bottom: 2rem !important;
+}
+
+html.tgs-ova-embedded .tgs-ova-body .hero-title,
+html.tgs-ova-embedded .tgs-ova-body #hero h1,
+html.tgs-ova-embedded .tgs-ova-body .hero h1 {
+  font-size: clamp(1.5rem, 4vw, 2.4rem) !important;
+}
+
+html.tgs-ova-embedded nav,
+html.tgs-ova-embedded .navbar,
+html.tgs-ova-embedded #navbar,
+html.tgs-ova-embedded #nav {
+  top: var(--tgs-header-h) !important;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .tgs-ova-usb-header {
+    flex-wrap: wrap;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  .tgs-ova-usb-header__meta {
+    width: 100%;
+    text-align: left;
+    font-size: 0.62rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tgs-btn-primary,
+  .tgs-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* P2 — Seguridad responsive global en OVAs embebidas */
+html.tgs-ova-root {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.tgs-ova-root iframe,
+.tgs-ova-root video,
+.tgs-ova-root embed {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .tgs-ova-root img {
+    max-width: 100%;
+    height: auto;
+  }
+}

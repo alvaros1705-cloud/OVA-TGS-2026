@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal Académico de Objetos Virtuales de Aprendizaje (OVAs) para Teoría General de Sistemas — Universidad Simón Bolívar, Campus Cúcuta.">
+  <title>Portal Académico OVAS - Teoría General de Sistemas | USB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="portal-header">
+    <div class="header-left">
+      <button class="hamburger-btn" id="hamburger-toggle" aria-label="Abrir menú de navegación" aria-controls="sidebar">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="6" x2="20" y2="6"></line>
+          <line x1="4" y1="18" x2="20" y2="18"></line>
+        </svg>
+      </button>
+      <div class="logo-container">
+        <img src="assets/img/logo-simonbolivar.png" alt="Logo Universidad Simón Bolívar" class="header-logo">
+        <div class="logo-text">
+          <span class="logo-title">TEORÍA GENERAL DE SISTEMAS</span>
+          <span class="logo-subtitle">Portal Integrado de Objetos Virtuales de Aprendizaje</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="institutional-badge">
+        <div class="usb-text">
+          <span class="usb-name">Universidad Simón Bolívar</span>
+          <span class="usb-sub">Programa de Ingeniería de Sistemas</span>
+          <span class="usb-campus">Campus Cúcuta</span>
+        </div>
+      </div>
+      <div class="header-weather" id="header-weather" aria-label="Fecha y hora" aria-live="polite">
+        <div class="header-weather__row header-weather__date">
+          <span class="header-weather__label" aria-hidden="true">📅</span>
+          <time id="header-date" datetime="">—</time>
+        </div>
+        <div class="header-weather__row header-weather__time">
+          <span class="header-weather__label" aria-hidden="true">🕒</span>
+          <time id="header-clock">12:00:00 am</time>
+        </div>
+      </div>
+      <button class="theme-toggle-btn" id="theme-toggle" aria-label="Cambiar tema de color">
+        <svg class="icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        </svg>
+        <svg class="icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="portal-container">
+
+    <aside class="sidebar" id="sidebar" aria-hidden="true">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">Menú Principal</h2>
+        <button class="close-sidebar-btn" id="sidebar-close" aria-label="Cerrar menú">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="search-box">
+        <label for="ova-search" class="visually-hidden">Buscar OVAs</label>
+        <div class="search-input-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="ova-search" placeholder="Buscar por tema o autor..." aria-label="Buscar OVAs">
+        </div>
+      </div>
+      <nav class="sidebar-nav" aria-label="Navegación de OVAs">
+        <ul class="nav-list" id="sidebar-nav-root">
+          <li>
+            <a href="#/" class="nav-item active" id="nav-home">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+              <span>Inicio / Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-divider">Temáticas de Sistemas</li>
+        </ul>
+        <ul class="nav-list" id="ova-nav-list"></ul>
+      </nav>
+      <div class="sidebar-footer">
+        <p class="sidebar-theme-hint">Tema claro / oscuro desde el botón superior del header.</p>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+    <main class="main-content" id="main-content">
+      <canvas class="dashboard-network-canvas" id="dashboard-network-canvas" aria-hidden="true"></canvas>
+
+      <section class="dashboard-view" id="dashboard-view">
+
+        <header class="hero-section">
+          <div class="hero-content">
+            <h1 class="hero-title">TEORÍA GENERAL DE SISTEMAS</h1>
+            <h2 class="hero-subtitle">Programa de Ingeniería de Sistemas</h2>
+            <h3 class="hero-institution">Universidad Simón Bolívar</h3>
+            <p class="hero-tagline">Repositorio integrado de Objetos Virtuales de Aprendizaje desarrollados por estudiantes de la asignatura Teoría General de Sistemas. Explora fundamentos, tipos, dinámica, cibernética y aplicaciones reales del pensamiento sistémico.</p>
+            <div class="hero-actions">
+              <a href="#ovas-grid-anchor" class="btn-hero-primary" id="btn-explore">Explorar OVAs</a>
+              <button class="btn-hero-secondary" id="btn-about-project">Conocer Proyecto</button>
+            </div>
+          </div>
+          <div class="hero-logo-wrapper">
+            <div class="hero-visual-stage" aria-hidden="true">
+              <div class="hero-ambient-glow"></div>
+              <svg class="hero-circuit-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <line class="hero-circuit-line" x1="160" y1="160" x2="278" y2="98"></line>
+                <line class="hero-circuit-line" x1="160" y1="160" x2="42" y2="98"></line>
+                <line class="hero-circuit-line" x1="160" y1="160" x2="278" y2="222"></line>
+                <line class="hero-circuit-line" x1="160" y1="160" x2="42" y2="222"></line>
+                <line class="hero-circuit-line hero-circuit-line--branch" x1="220" y1="98" x2="248" y2="68"></line>
+                <line class="hero-circuit-line hero-circuit-line--branch" x1="72" y1="98" x2="44" y2="68"></line>
+                <line class="hero-circuit-line hero-circuit-line--branch" x1="220" y1="222" x2="248" y2="252"></line>
+                <line class="hero-circuit-line hero-circuit-line--branch" x1="72" y1="222" x2="44" y2="252"></line>
+                <circle class="hero-circuit-node" cx="278" cy="98" r="2.5"></circle>
+                <circle class="hero-circuit-node" cx="42" cy="98" r="2"></circle>
+                <circle class="hero-circuit-node" cx="278" cy="222" r="2"></circle>
+                <circle class="hero-circuit-node" cx="42" cy="222" r="2.5"></circle>
+              </svg>
+              <div class="hero-orbit-ring hero-orbit-ring--far"></div>
+              <div class="hero-orbit-ring hero-orbit-ring--outer"></div>
+              <svg class="hero-arc-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <circle class="hero-orbit-arc" cx="160" cy="160" r="118" fill="none"></circle>
+              </svg>
+              <div class="hero-orbit-ring hero-orbit-ring--mid"></div>
+              <div class="hero-orbit-ring hero-orbit-ring--inner"></div>
+              <div class="hero-orbit-satellite hero-orbit-satellite--a"><span class="hero-star"></span></div>
+              <div class="hero-orbit-satellite hero-orbit-satellite--b"><span class="hero-star hero-star--dim"></span></div>
+              <div class="hero-orbit-satellite hero-orbit-satellite--c"><span class="hero-star hero-star--small"></span></div>
+              <span class="hero-star-point hero-star-point--1"></span>
+              <span class="hero-star-point hero-star-point--2"></span>
+              <span class="hero-star-point hero-star-point--3"></span>
+              <span class="hero-star-point hero-star-point--4"></span>
+              <span class="hero-star-point hero-star-point--5"></span>
+              <span class="hero-star-point hero-star-point--6"></span>
+              <span class="hero-particle hero-particle--1"></span>
+              <span class="hero-particle hero-particle--2"></span>
+              <span class="hero-particle hero-particle--3"></span>
+              <span class="hero-particle hero-particle--4"></span>
+              <span class="hero-particle hero-particle--5"></span>
+              <span class="hero-particle hero-particle--6"></span>
+              <div class="hero-stage-base">
+                <span class="hero-base-ring hero-base-ring--1"></span>
+                <span class="hero-base-ring hero-base-ring--2"></span>
+                <span class="hero-base-ring hero-base-ring--3"></span>
+                <span class="hero-base-glow"></span>
+              </div>
+            </div>
+            <div class="hero-logo-core">
+              <div class="hero-logo-halo" aria-hidden="true"></div>
+              <div class="hero-logo-disc" aria-hidden="true"></div>
+              <img src="assets/img/logo-sistemas.png" alt="Logo Ingeniería de Sistemas USB" class="hero-logo">
+            </div>
+          </div>
+        </header>
+
+        <section class="indicators-section">
+          <div class="indicators-grid">
+            <div class="indicator-card">
+              <div class="indicator-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              </div>
+              <div class="indicator-info">
+                <span class="indicator-count">14</span>
+                <span class="indicator-label">OVAs Integradas</span>
+              </div>
+            </div>
+            <div class="indicator-card">
+              <div class="indicator-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+              <div class="indicator-info">
+                <span class="indicator-count">14</span>
+                <span class="indicator-label">Equipos de Trabajo</span>
+              </div>
+            </div>
+            <div class="indicator-card">
+              <div class="indicator-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5v-15z"></path></svg>
+              </div>
+              <div class="indicator-info">
+                <span class="indicator-count">6</span>
+                <span class="indicator-label">Temáticas Cubiertas</span>
+              </div>
+            </div>
+            <div class="indicator-card">
+              <div class="indicator-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect></svg>
+              </div>
+              <div class="indicator-info">
+                <span class="indicator-count">8+</span>
+                <span class="indicator-label">Tecnologías Utilizadas</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <span id="ovas-grid-anchor"></span>
+        <section class="ovas-section">
+          <div class="section-header">
+            <h2 class="section-title">Objetos Virtuales de Aprendizaje</h2>
+            <p class="section-subtitle">Selecciona una temática para interactuar con el contenido académico sin salir del portal.</p>
+          </div>
+          <div class="ovas-grid" id="ovas-grid"></div>
+        </section>
+
+        <section class="learning-section" id="learning-section">
+          <div class="section-header learning-section-head">
+            <div>
+              <h2 class="section-title">Centro de Aprendizaje</h2>
+              <p class="section-subtitle">Guías, ejemplos, quices, juegos y desafíos de Teoría General de Sistemas.</p>
+            </div>
+            <aside class="learning-progress-panel" id="learning-progress-stats" aria-label="Estadísticas de progreso"></aside>
+          </div>
+          <div class="learning-grid">
+            <article class="learning-card">
+              <div class="learning-card-icon">📖</div>
+              <h3 class="learning-card-title">Guía de las OVAs</h3>
+              <p class="learning-card-desc">Qué estudia cada OVA, cómo utilizarla, conceptos clave y resultados esperados.</p>
+              <button type="button" class="btn-card-primary learning-open-btn" data-learning-open="learning-guide-modal" data-learning-init="initGuide">Abrir guía</button>
+            </article>
+            <article class="learning-card">
+              <div class="learning-card-icon">📚</div>
+              <h3 class="learning-card-title">Ejemplos Resueltos</h3>
+              <p class="learning-card-desc">Casos comentados para todas las temáticas: fundamentos, tipos, dinámica y cibernética.</p>
+              <button type="button" class="btn-card-primary learning-open-btn" data-learning-open="learning-examples-modal" data-learning-init="initExamples">Ver ejemplos</button>
+            </article>
+            <article class="learning-card">
+              <div class="learning-card-icon">📝</div>
+              <h3 class="learning-card-title">Quiz Interactivo</h3>
+              <p class="learning-card-desc">20 preguntas aleatorias con retroalimentación inmediata y puntaje final.</p>
+              <button type="button" class="btn-card-primary learning-open-btn" data-learning-open="learning-quiz-modal" data-learning-init="initQuiz">Iniciar quiz</button>
+            </article>
+            <article class="learning-card">
+              <div class="learning-card-icon">🔍</div>
+              <h3 class="learning-card-title">Detecta el Error</h3>
+              <p class="learning-card-desc">Identifica fallas conceptuales en descripciones de sistemas y diagramas.</p>
+              <button type="button" class="btn-card-primary learning-open-btn" data-learning-open="learning-detect-modal" data-learning-init="initDetect">Jugar</button>
+            </article>
+            <article class="learning-card">
+              <div class="learning-card-icon">🧩</div>
+              <h3 class="learning-card-title">Construye el Sistema</h3>
+              <p class="learning-card-desc">Arma subsistemas, entradas, salidas y retroalimentación en escenarios guiados.</p>
+              <button type="button" class="btn-card-primary learning-open-btn" data-learning-open="learning-build-modal" data-learning-init="initBuild">Construir</button>
+            </article>
+            <article class="learning-card">
+              <div class="learning-card-icon">🏆</div>
+              <h3 class="learning-card-title">Desafíos TGS</h3>
+              <p class="learning-card-desc">5 niveles: conceptos básicos, tipos, cibernética, dinámica y aplicaciones reales.</p>
+              <button type="button" class="btn-card-primary learning-open-btn" data-learning-open="learning-challenges-modal" data-learning-init="initChallenges">Desafiar</button>
+            </article>
+            <article class="learning-card">
+              <div class="learning-card-icon">🎯</div>
+              <h3 class="learning-card-title">Juego del Ahorcado</h3>
+              <p class="learning-card-desc">Adivina términos TGS: Sistema, Homeostasis, Sinergia, Cibernética y más.</p>
+              <button type="button" class="btn-card-primary learning-open-btn" data-learning-open="learning-hangman-modal" data-learning-init="initHangman">Jugar</button>
+            </article>
+            <article class="learning-card">
+              <div class="learning-card-icon">🔤</div>
+              <h3 class="learning-card-title">Sopa de Letras</h3>
+              <p class="learning-card-desc">Múltiples niveles con conceptos de Teoría General de Sistemas.</p>
+              <button type="button" class="btn-card-primary learning-open-btn" data-learning-open="learning-wordsearch-modal" data-learning-init="initWordSearch">Jugar</button>
+            </article>
+            <article class="learning-card">
+              <div class="learning-card-icon">🔗</div>
+              <h3 class="learning-card-title">Apareamiento</h3>
+              <p class="learning-card-desc">Empareja conceptos con definiciones: Homeostasis, Sinergia, Retroalimentación…</p>
+              <button type="button" class="btn-card-primary learning-open-btn" data-learning-open="learning-matching-modal" data-learning-init="initMatching">Jugar</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="advisor-section">
+          <div class="advisor-card">
+            <div class="advisor-visual">
+              <div class="advisor-badge"><span class="advisor-initials">AS</span></div>
+            </div>
+            <div class="advisor-content">
+              <span class="advisor-tag">Dirección y Asesoría Académica</span>
+              <h2 class="advisor-name">Álvaro Salamanca Landínez</h2>
+              <ul class="advisor-details">
+                <li>Ingeniero de Sistemas • Ingeniero Civil</li>
+                <li>Especialista en Informática Educativa</li>
+                <li>Magíster en Educación Matemática</li>
+                <li>Docente Investigador</li>
+              </ul>
+              <span class="advisor-institution">Universidad Simón Bolívar — Campus Cúcuta</span>
+            </div>
+          </div>
+        </section>
+
+      </section>
+
+      <section class="ova-viewer-view" id="ova-viewer-view" style="display: none;">
+        <div class="viewer-header">
+          <div class="viewer-nav">
+            <a href="#/" class="btn-back" id="btn-back-dashboard">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              <span>Volver</span>
+            </a>
+            <div class="viewer-title-group">
+              <h1 class="viewer-title" id="active-ova-title">OVA</h1>
+              <span class="viewer-author" id="active-ova-author">Autor</span>
+            </div>
+          </div>
+          <div class="viewer-controls">
+            <button class="btn-control" id="btn-reload-ova" aria-label="Recargar OVA">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+              <span>Recargar</span>
+            </button>
+            <a href="#" target="_blank" class="btn-control-link" id="btn-open-external" aria-label="Abrir externo">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"></path></svg>
+              <span>Externo</span>
+            </a>
+          </div>
+        </div>
+        <div class="iframe-wrapper">
+          <div class="iframe-loader" id="iframe-loader">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">
+              <span class="loader-main-text">Cargando OVA institucional...</span>
+              <span class="loader-sub-text" id="loader-status">Inicializando entorno sistémico</span>
+            </div>
+          </div>
+          <iframe id="ova-iframe" name="ova-iframe" title="Visor de Objeto Virtual de Aprendizaje" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" src="about:blank"></iframe>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <dialog class="settings-modal" id="settings-dialog">
+    <div class="modal-header">
+      <h2 class="modal-title">Configuración del Portal</h2>
+      <button class="close-modal-btn" id="close-settings" aria-label="Cerrar">&times;</button>
+    </div>
+    <form method="dialog" class="modal-form">
+      <p class="modal-intro">Las OVAs de TGS son clientes estáticos. El tema claro/oscuro se sincroniza automáticamente con cada OVA embebida mediante <code>USB_THEME_CHANGED</code> y <code>localStorage</code>.</p>
+      <p class="modal-intro">Las 14 OVAs integran el Design System TGS (<code>tgs-ova-*.css/js</code>). El tema se sincroniza con <code>TGS_THEME_CHANGED</code> y <code>localStorage</code>.</p>
+      <div class="modal-actions">
+        <button type="submit" class="btn-primary">Entendido</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="details-modal" id="project-about-modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Acerca del Portal TGS</h2>
+      <button class="close-details-btn" data-close="project-about-modal" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="modal-body">
+      <h3>Portal Académico Integrador de OVAs</h3>
+      <p>Plataforma hermana del Portal de Teoría de Compiladores, adaptada a la asignatura <strong>Teoría General de Sistemas</strong> de la <strong>Universidad Simón Bolívar — Campus Cúcuta</strong>.</p>
+      <p>Integra 14 objetos virtuales de aprendizaje sin modificar su lógica académica interna. Incluye Centro de Aprendizaje con guías, ejemplos, quices, juegos y desafíos por niveles.</p>
+      <ul>
+        <li>Centralizar el software didáctico generado por los estudiantes.</li>
+        <li>Homogeneizar la experiencia de navegación institucional.</li>
+        <li>Enriquecer el aprendizaje con actividades transversales de TGS.</li>
+      </ul>
+    </div>
+  </dialog>
+
+  <!-- Centro de Aprendizaje — Modales -->
+  <dialog class="details-modal learning-modal" id="learning-guide-modal">
+    <div class="modal-header"><h2 class="modal-title">📖 Guía de las OVAs</h2><button type="button" class="close-details-btn" data-learning-close="learning-guide-modal">&times;</button></div>
+    <div class="modal-body learning-modal-body" id="learning-guide-body"></div>
+  </dialog>
+
+  <dialog class="details-modal learning-modal learning-modal-wide" id="learning-examples-modal">
+    <div class="modal-header"><h2 class="modal-title">📚 Ejemplos Resueltos</h2><button type="button" class="close-details-btn" data-learning-close="learning-examples-modal">&times;</button></div>
+    <div class="modal-body learning-modal-body learning-scroll" id="learning-examples-body"></div>
+  </dialog>
+
+  <dialog class="details-modal learning-modal" id="learning-quiz-modal">
+    <div class="modal-header"><h2 class="modal-title">📝 Quiz Interactivo TGS</h2><button type="button" class="close-details-btn" data-learning-close="learning-quiz-modal">&times;</button></div>
+    <div class="modal-body learning-modal-body">
+      <div id="learning-quiz-active">
+        <div class="learning-quiz-meta">
+          <span id="learning-quiz-progress">Pregunta 1 de 20</span>
+          <span class="learning-quiz-live">Puntaje: <strong id="learning-quiz-live-score">0</strong></span>
+          <div class="learning-progress-track"><div class="learning-progress-bar" id="learning-quiz-bar"></div></div>
+        </div>
+        <p class="learning-quiz-question" id="learning-quiz-question"></p>
+        <div class="learning-quiz-options" id="learning-quiz-options"></div>
+        <p class="learning-quiz-feedback" id="learning-quiz-feedback"></p>
+      </div>
+      <div id="learning-quiz-result" class="learning-quiz-result hidden">
+        <h3>Resultado final</h3>
+        <p class="learning-quiz-score" id="learning-quiz-score"></p>
+        <p class="learning-quiz-level" id="learning-quiz-level"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="details-modal learning-modal" id="learning-detect-modal">
+    <div class="modal-header"><h2 class="modal-title">🔍 Detecta el Error</h2><button type="button" class="close-details-btn" data-learning-close="learning-detect-modal">&times;</button></div>
+    <div class="modal-body learning-modal-body" id="learning-detect-body"></div>
+  </dialog>
+
+  <dialog class="details-modal learning-modal" id="learning-build-modal">
+    <div class="modal-header"><h2 class="modal-title">🧩 Construye el Sistema</h2><button type="button" class="close-details-btn" data-learning-close="learning-build-modal">&times;</button></div>
+    <div class="modal-body learning-modal-body" id="learning-build-body"></div>
+  </dialog>
+
+  <dialog class="details-modal learning-modal learning-modal-wide" id="learning-challenges-modal">
+    <div class="modal-header"><h2 class="modal-title">🏆 Desafíos TGS — 5 Niveles</h2><button type="button" class="close-details-btn" data-learning-close="learning-challenges-modal">&times;</button></div>
+    <div class="modal-body learning-modal-body learning-scroll" id="learning-challenges-body"></div>
+  </dialog>
+
+  <dialog class="details-modal learning-modal" id="learning-hangman-modal">
+    <div class="modal-header"><h2 class="modal-title">🎯 Ahorcado TGS</h2><button type="button" class="close-details-btn" data-learning-close="learning-hangman-modal">&times;</button></div>
+    <div class="modal-body learning-modal-body">
+      <div class="hangman-stats"><span>Intentos: <strong id="hangman-wrong-count">0</strong> / 6</span><span>Aciertos: <strong id="hangman-wins-count">0</strong></span></div>
+      <div class="hangman-display" id="hangman-word-display"></div>
+      <div class="hangman-keyboard" id="hangman-keyboard"></div>
+      <p class="learning-game-feedback" id="hangman-feedback"></p>
+      <button type="button" class="btn-card-secondary" id="hangman-reset-btn">Reiniciar</button>
+    </div>
+  </dialog>
+
+  <dialog class="details-modal learning-modal learning-modal-wide" id="learning-wordsearch-modal">
+    <div class="modal-header"><h2 class="modal-title">🔤 Sopa de Letras TGS</h2><button type="button" class="close-details-btn" data-learning-close="learning-wordsearch-modal">&times;</button></div>
+    <div class="modal-body learning-modal-body learning-scroll">
+      <p class="learning-pipeline-hint">Selecciona letras en línea recta para encontrar cada concepto.</p>
+      <div class="wordsearch-layout">
+        <div class="wordsearch-grid" id="wordsearch-grid"></div>
+        <div class="wordsearch-words" id="wordsearch-word-list"></div>
+      </div>
+      <p class="learning-game-feedback" id="wordsearch-feedback"></p>
+      <button type="button" class="btn-card-secondary" id="wordsearch-reset-btn">Reiniciar</button>
+    </div>
+  </dialog>
+
+  <dialog class="details-modal learning-modal learning-modal-wide" id="learning-matching-modal">
+    <div class="modal-header"><h2 class="modal-title">🔗 Apareamiento de Conceptos</h2><button type="button" class="close-details-btn" data-learning-close="learning-matching-modal">&times;</button></div>
+    <div class="modal-body learning-modal-body learning-scroll">
+      <p class="learning-game-score">Puntaje: <strong id="matching-score">0</strong> / 10</p>
+      <div class="matching-layout">
+        <div class="matching-pool" id="matching-pool"></div>
+        <div class="matching-targets" id="matching-targets"></div>
+      </div>
+      <p class="learning-game-feedback" id="matching-feedback"></p>
+      <button type="button" class="btn-card-secondary" id="matching-reset-btn">Reiniciar</button>
+    </div>
+  </dialog>
+
+  <footer class="portal-footer">
+    <div class="footer-grid">
+      <div class="footer-logo-col">
+        <img src="assets/img/logo-simonbolivar.png" alt="Universidad Simón Bolívar" class="footer-logo">
+      </div>
+      <div class="footer-info-col">
+        <span class="footer-title">UNIVERSIDAD SIMÓN BOLÍVAR</span>
+        <span class="footer-item">Facultad de Ingeniería</span>
+        <span class="footer-item">Programa de Ingeniería de Sistemas</span>
+        <span class="footer-item">Asignatura: Teoría General de Sistemas</span>
+      </div>
+      <div class="footer-meta-col">
+        <span class="footer-portal-title">Portal Académico de OVAs TGS</span>
+        <span class="footer-version">Versión Institucional 1.0</span>
+        <span class="footer-copyright">© <span id="current-year">2026</span> USB Cúcuta.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/learning-data.js"></script>
+  <script src="js/learning-hub.js"></script>
+  <script src="js/dashboard-network-bg.js"></script>
+  <script src="js/header-weather.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

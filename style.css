@@ -1814,19 +1814,17 @@ body.ova-mode .ova-viewer-view .iframe-wrapper {
     gap: 0;
   }
   .logo-container {
-    position: absolute;
-    left: 50%;
-    top: 40px;
-    transform: translateX(-50%);
+    position: static;
+    transform: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 0;
-    width: max-content;
-    max-width: calc(100% - 112px);
+    gap: 8px;
+    width: auto;
+    max-width: none;
     min-width: 0;
     z-index: 1;
-    pointer-events: none;
+    pointer-events: auto;
   }
   .header-logo {
     max-height: 38px;
